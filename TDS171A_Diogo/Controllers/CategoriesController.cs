@@ -35,7 +35,7 @@ namespace TDS171A_Diogo.Controllers
             categoryList.Add(category);
             category.CategoryId =
                 categoryList.Max(c => c.CategoryId) + 1;
-            return RedirectToAction("Create");
+            return RedirectToAction("Index");
         }
         public ActionResult Details(long id)
         {
