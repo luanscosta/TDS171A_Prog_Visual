@@ -66,6 +66,7 @@ namespace TDS171A_Diogo.Controllers
                  .First();
 
             category.Name = modified.Name;
+            category.Description = modified.Description;
 
             return RedirectToAction("Index");
         }
