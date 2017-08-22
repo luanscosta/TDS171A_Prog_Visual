@@ -17,5 +17,15 @@ namespace TDS171A_Diogo.Controllers
                 .Suppliers
                 .OrderBy( s => s.Name));
         }
+        public ActionResult Create()
+        {
+            return View();
+            
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
     }
 }
