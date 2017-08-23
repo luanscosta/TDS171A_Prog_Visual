@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TDS171A_Diogo.Context;
+using TDS171A_Diogo.Models;
 
 namespace TDS171A_Diogo.Controllers
 {
@@ -17,11 +18,16 @@ namespace TDS171A_Diogo.Controllers
                 .Suppliers
                 .OrderBy( s => s.Name));
         }
-        public ActionResult Create()
+        public ActionResult Create(Supplier supplier)
         {
-            return View();
+            _context.Suppliers.Add(supplier);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
             
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult Edit()
         {
