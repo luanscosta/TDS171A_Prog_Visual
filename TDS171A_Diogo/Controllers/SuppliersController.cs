@@ -20,6 +20,7 @@ namespace TDS171A_Diogo.Controllers
                 .Suppliers
                 .OrderBy(s => s.Name));
         }
+
         public ActionResult Create()
         {
             return View();
@@ -73,6 +74,25 @@ namespace TDS171A_Diogo.Controllers
             return View(supplier);
         }
 
+
+        public ActionResult Delete(long? id)
+        {
+            if (!id.HasValue)
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
+
+           var supplier = _context
+                .Suppliers
+                .Find(id.Value);
+
+           if (supplier == null)
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.NotFound);
+
+           return View(supplier);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete (Supplier supplier )
         {
             if (ModelState.IsValid)
